@@ -1,6 +1,8 @@
 package roda_conversa;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Date;
 
 public class Evento {
     private int id;
@@ -16,6 +18,8 @@ public class Evento {
         this.data = data;
         this.duracao = duracao;
         this.local = local;
+        this.convidados = new ArrayList<>(); // Inicializa com uma lista vazia
+
     }
 
     // Método para informar o local do evento
@@ -41,6 +45,19 @@ public class Evento {
     public void registrarMediador(Mediador mediador) {
         this.mediador = mediador;
     }
+    
+    public boolean inserirConvidado(Convidado convidado) {
+        if (!convidados.contains(convidado)) {
+            convidados.add(convidado);
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean removerConvidado(Convidado convidado) {
+        return convidados.remove(convidado);
+    }
+    
 
     public int getId() {
         return id;
@@ -63,7 +80,10 @@ public class Evento {
     }
 
     public void setDuracao(int duracao) {
-        this.duracao = duracao;
+    	 if (duracao <= 0) {
+    	        throw new IllegalArgumentException("A duração deve ser maior que zero.");
+    	    }
+    	    this.duracao = duracao;
     }
 
     public String getLocal() {
