@@ -18,16 +18,14 @@ public class Evento {
         this.data = data;
         this.duracao = duracao;
         this.local = local;
-        this.convidados = new ArrayList<>(); // Inicializa com uma lista vazia
+        this.convidados = new ArrayList<>();
 
     }
 
-    // Método para informar o local do evento
     public void informarLocal(String local) {
         this.local = local;
     }
 
-    // Método para inserir um assunto no evento
     public boolean inserirAssunto(Assunto assunto) {
         if (!assuntos.contains(assunto)) {
             assuntos.add(assunto);
@@ -36,12 +34,10 @@ public class Evento {
         return false;
     }
 
-    // Método para remover um assunto do evento
     public boolean removerAssunto(Assunto assunto) {
         return assuntos.remove(assunto);
     }
 
-    // Método para registrar um mediador para o evento
     public void registrarMediador(Mediador mediador) {
         this.mediador = mediador;
     }
